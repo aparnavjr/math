@@ -1,0 +1,36 @@
+public class Solution {
+    public int Divide(int dividend, int divisor) {
+        
+        long dividen = dividend;
+        long diviso = divisor;
+        
+        bool positive = true;
+       if((dividen < 0 && diviso > 0)|| (dividen > 0 && diviso < 0))
+            positive = false;
+            
+       long q = 0;
+       
+       dividen = Math.Abs(dividen);
+       diviso = Math.Abs(diviso);
+        
+        if( diviso == 1 || diviso == -1)
+        {
+            if(dividen-1 == Int32.MaxValue || dividen == Int32.MinValue)
+                return positive == false ? Int32.MinValue : Int32.MaxValue;
+            else
+                return positive == false ? -(int)dividen : (int)dividen;
+        }
+        
+        while(dividen >= diviso)
+        {
+            dividen = dividen- diviso;
+            q++;
+        }
+        
+        if( q >= Int32.MaxValue)    
+            return positive == false ? Int32.MinValue : Int32.MaxValue;
+            
+        return positive == false ? -(int)q : (int)q;
+            
+    }
+}
