@@ -1,0 +1,15 @@
+public void Main()
+{
+  Console.WriteLine(Isqrt(3));
+}
+
+public static float Isqrt(int num) {  
+    if (0 == num) { return 0; }  // Avoid zero divide  
+    float n = (num / 2) + 1;       // Initial estimate, never low  
+    float n1 = (n + (num / n)) / 2;  
+    while (n1 < n) {  
+        n = n1;  
+        n1 = (n + (num / n)) / 2;  
+    } // end while  
+    return n;  
+} 
